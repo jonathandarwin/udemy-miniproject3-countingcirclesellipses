@@ -1,11 +1,13 @@
 import cv2
 import numpy as np
 
+# gambar yang ingin dideteksi blob nya harus di grayscale dlu
 image = cv2.imread('blobs.jpg', 0)
 cv2.imshow('Original Image', image)
 cv2.waitKey(0)
 
 # create detector
+# blob : group pixel gambar yang miliki property yang sama, seperti warna, intensitas, dll.
 detector = cv2.SimpleBlobDetector_create()
 
 # detect blobs
@@ -23,7 +25,8 @@ cv2.putText(blobs, text, (20, 550), cv2.FONT_HERSHEY_SIMPLEX, 1, (100, 0, 255), 
 cv2.imshow('Blob using default parameters' ,blobs)
 cv2.waitKey(0)
 
-# set parameters
+# kita dapat set parameter ketika menggunakan SimpleBlobDetector 
+# set parameter yang sesuai dengan blob yang ingin kita detect
 params = cv2.SimpleBlobDetector_Params()
 
 params.filterByArea = True
